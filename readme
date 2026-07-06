@@ -1,0 +1,42 @@
+Tue Jul 6, 2026
+
+So, today is my first day studying SICP.
+
+I initially planned to thoroughly and carefully read through the entire book 
+over the summer break. However, after a quick skim, I realized that's 
+impossible---especially since I have to spend a lot of time every day working 
+out and writing other side projects. So, I've decided to take my time.
+
+The entirety of Section 1.1 mostly covers basic programming concepts and Lisp 
+syntax. It's very straightforward, but there are definitely quite a few 
+gotchas. For instance, you can't just write '-x' in Lisp; you have to write 
+'(- x)'. This is because Lisp doesn't define '-' as an operator like other 
+languages do. Instead, it behaves more like a procedure (or a function).
+
+And here are a few interesting facts:
+
+* Tail-Call Optimization: The Lisp interpreter (at least the one used for 
+  teaching in SICP) features special tail-call optimization. Consequently, 
+  a function that would normally cause a stack overflow, like this:
+
+    void recursion(void)
+        return recursion();
+
+  ...will run perfectly fine in Lisp. However, if there is a pending 
+  operation involving a value within the function call, the interpreter 
+  still has to allocate a separate stack frame, meaning it will still 
+  overflow.
+
+* Indentation & Formatting: The Lisp community generally prefers using two 
+  spaces for indentation. Furthermore, spaces are used for alignment to keep 
+  the layout looking clean and beautiful.
+
+  For example:
+    
+    (define (abs x)
+      (cond ((= x 0) 0)
+            ((> x 0) x)
+            ((< x 0) (- x))))
+
+I've found that SICP can be a bit of a pain, but learning it is strangely 
+addictive.
