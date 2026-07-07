@@ -16,6 +16,7 @@
                  x)))
 
 (define (cbrt x)
-  (cbrt-iter (* x 1.0)
-             1.0 
-             (* x 1.0))) 
+  (if (= 0 x) 0
+              (cbrt-iter (* x 1.0)
+                         1.0 
+                         (* x 1.0))) 

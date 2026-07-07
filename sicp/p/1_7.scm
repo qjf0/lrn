@@ -17,4 +17,8 @@
                  x)))
 
 (define (sqrt-improved x)
-  (sqrt-iter x 1 x)) 
+  (cond ((< x 0) (error 'sqrt-improved "Cannot compute the square root of a negative number" x))
+        ((= x 0) 0.0)
+        (else (sqrt-iter (* 1.0 x)
+                         1.0
+                         (* 1.0 x)))))

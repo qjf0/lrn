@@ -1,3 +1,28 @@
+15:42
+Tue Jul 7, 2026
+
+Fixed a few issues that I hadn't noticed before:
+
+* In Exercises 1.7 and 1.8, we need to add a precondition check to see if x is 0
+  to avoid infinite loops. This is because 0.0 / 0.0 results in NaN (Not a
+  Number) in mathematics.
+
+  An interesting fact is that since NaN represents an undefinable number, it is
+  not even equal to itself in most programming languages.
+
+  Therefore, we can use the following expression to avoid NaN scenarios:
+
+    (if (= x x) ...)
+
+  Meanwhile, we can throw exceptions in Scheme using 'error', 'raise', or
+  'guard'. All of these can be used smoothly in Chez Scheme.
+
+* Due to translation issues, Exercise 1.3 is different in the English and
+  Chinese versions. I have appended the English version of the exercise into the
+  original ./sicp/p/1_3.scm file.
+
+--------------------------------------------------------------------------------
+14:00
 Tue Jul 7, 2026
 
 Today, I started working on the exercises for SICP Section 1.1.
@@ -106,7 +131,8 @@ Today, I started working on the exercises for SICP Section 1.1.
   I successfully implemented this algorithm in ./sicp/p/1_8.scm.
 
 --------------------------------------------------------------------------------
-Mon Jul 6, 2026
+01:40
+Mon, Jul 6, 2026
 
 So, today is my first day studying SICP.
 
