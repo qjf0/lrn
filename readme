@@ -1,4 +1,112 @@
-Tue Jul 6, 2026
+Tue Jul 7, 2026
+
+Today, I started working on the exercises for SICP Section 1.1.
+
+* First up is Exercise 1.1, which is a very basic introductory problem.
+
+  Interestingly, entering (= 1 1) into my current interpreter returns #t for
+  true (as opposed to #f for false).
+
+* Then I tackled Exercise 1.2 (./sicp/p/1_2.scm), which is also quite simple.
+
+  Note that 4/5 cannot be written directly as 0.8; according to the official
+  SICP answers, it must be expressed as the combination (/ 4 5).
+
+* Next came Exercise 1.3 (./sicp/p/1_3.scm). I needed to define a procedure
+  that takes three numbers and returns the sum of the squares of the two larger
+  numbers.
+
+  A clever shortcut here is to sum the squares of all three numbers and then
+  subtract the square of the smallest one.
+
+* Exercise 1.4 asks to describe the behavior of a specific procedure.
+
+  This function simply adds the absolute value of b to a.
+
+  The key lies in this ingenious expression: (if (> b 0) + -).
+
+  If b > 0, it evaluates to +, which becomes the operator for the outer
+  combination; otherwise, it evaluates to -.
+
+* Exercise 1.5 is really interesting. Ben Bitdiddle wrote a program to detect
+  whether an interpreter uses applicative-order or normal-order evaluation:
+
+    (define (p) (p))
+
+    (define (test x y)
+      (if (= x 0)
+          0
+          y))
+
+    (test 0 (p))
+
+  Under applicative-order evaluation, where all arguments are evaluated first,
+  this program will loop infinitely.
+
+  Because p is an infinite tail-recursive function, (test 0 (p)) must evaluate
+  (p) before proceeding.
+
+  Under normal-order evaluation, arguments are only evaluated when needed. The
+  expression first expands to: (if (= 0 0) 0 (p)).
+
+  Note that under both evaluation orders, 'if' follows a special rule: it
+  evaluates the predicate first (= 0 0), and then evaluates the consequent
+  based on the result.
+
+  Since (= 0 0) is true, it returns 0 and never evaluates (p).
+
+* Exercise 1.6 is also fascinating. Alyssa P. Hacker used 'cond' to define a
+  new version of 'if' called 'new-if'.
+
+  The critical difference is that 'new-if' is a regular procedure, whereas 'if'
+  is a special form.
+
+  As noted before, 'if' evaluates the predicate first, but 'new-if' lacks this
+  short-circuiting behavior.
+
+  Consequently, 'new-if' follows applicative-order evaluation and evaluates
+  all its arguments before application, disrupting the intended order of
+  execution.
+
+  When using 'new-if' to compute square roots, the program keeps recursively
+  calling 'sqrt-iter' even after 'good-enough?' becomes true, eventually
+  triggering a stack overflow.
+
+  In fact, 'new-if' never terminates.
+
+* Exercise 1.7 required explaining why the book's implementation of
+  'good-enough?' fails for extremely small and extremely large numbers:
+
+    (define (good-enough? guess x)
+      (< (abs (- (square guess) x)) 0.001))
+
+  Simply put, this is due to the limited precision of floating-point numbers
+  in computers.
+
+  Breaking it down: If we calculate (sqrt 0.00001), the answer should be
+  around 0.01.
+
+  However, using 'good-enough?' with a fixed tolerance of 0.001 stops the
+  iteration around 0.03, which introduces a massive relative error.
+
+  For extremely large numbers, floating-point representations have a limited
+  number of bits, meaning the precision of the mantissa is insufficient at
+  large scales.
+
+  The difference between successive guesses will always remain larger than
+  0.001, trapping the program in an infinite loop.
+
+  To fix this, I implemented an alternative strategy for 'good-enough?' based
+  on how much the guess changes relative to the previous one. I saved this
+  algorithm in ./sicp/p/1_7.scm.
+
+* Finally, Exercise 1.8 required implementing Newton's method for computing
+  cube roots. 
+
+  I successfully implemented this algorithm in ./sicp/p/1_8.scm.
+
+--------------------------------------------------------------------------------
+Mon Jul 6, 2026
 
 So, today is my first day studying SICP.
 
