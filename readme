@@ -1,5 +1,38 @@
-15:42
+Learn SICP
+Read 1.2.1
+Tue Jul 9, 2026
+14:12
+
+I'm going to continue reading SICP, and I plan to spend the next couple of days
+trying to build some small things in Scheme.
+
+Interestingly, Scheme supports defining functions inside other functions (which
+is impossible in C) - you just nest define. Also, Scheme has closures, just
+like Python.
+
+Section 1.2.1 covers linear recursion and linear iteration. Since I've studied
+some algorithms before, I grasped this part quickly.
+
+What's really cool, though, is the way SICP describes the expansion of linear
+recursion.
+
+Take this factorial program for example:
+    (define (factorial n)
+      (if (= n 1)
+      1
+      (* n (factorial (- n 1)))))
+
+It's computation proceeds like an expansion followed by contraction - it
+recurses all the way down to the base case, then unwinds back up, and then
+interpreter has to remember every pending multiplication operation. As we all
+know, its time complexity is O(n) and space complexity is also O(n). With an
+iterative version, you don't see that expansion-contraction pattern; it can
+archieve O(1) space complexity and has no risk of stack overflow.
+
+--------------------------------------------------------------------------------
+none
 Tue Jul 7, 2026
+15:42
 
 Fixed a few issues that I hadn't noticed before:
 
@@ -22,8 +55,10 @@ Fixed a few issues that I hadn't noticed before:
   original ./sicp/p/1_3.scm file.
 
 --------------------------------------------------------------------------------
-14:00
+none
+none
 Tue Jul 7, 2026
+14:00
 
 Today, I started working on the exercises for SICP Section 1.1.
 
@@ -126,51 +161,53 @@ Today, I started working on the exercises for SICP Section 1.1.
   algorithm in ./sicp/p/1_7.scm.
 
 * Finally, Exercise 1.8 required implementing Newton's method for computing
-  cube roots. 
+  cube roots.
 
   I successfully implemented this algorithm in ./sicp/p/1_8.scm.
 
 --------------------------------------------------------------------------------
-01:40
+none
+none
 Mon, Jul 6, 2026
+01:40
 
 So, today is my first day studying SICP.
 
-I initially planned to thoroughly and carefully read through the entire book 
-over the summer break. However, after a quick skim, I realized that's 
-impossible---especially since I have to spend a lot of time every day working 
+I initially planned to thoroughly and carefully read through the entire book
+over the summer break. However, after a quick skim, I realized that's
+impossible---especially since I have to spend a lot of time every day working
 out and writing other side projects. So, I've decided to take my time.
 
-The entirety of Section 1.1 mostly covers basic programming concepts and Lisp 
-syntax. It's very straightforward, but there are definitely quite a few 
-gotchas. For instance, you can't just write '-x' in Lisp; you have to write 
-'(- x)'. This is because Lisp doesn't define '-' as an operator like other 
+The entirety of Section 1.1 mostly covers basic programming concepts and Lisp
+syntax. It's very straightforward, but there are definitely quite a few
+gotchas. For instance, you can't just write '-x' in Lisp; you have to write
+'(- x)'. This is because Lisp doesn't define '-' as an operator like other
 languages do. Instead, it behaves more like a procedure (or a function).
 
 And here are a few interesting facts:
 
-* Tail-Call Optimization: The Lisp interpreter (at least the one used for 
-  teaching in SICP) features special tail-call optimization. Consequently, 
+* Tail-Call Optimization: The Lisp interpreter (at least the one used for
+  teaching in SICP) features special tail-call optimization. Consequently,
   a function that would normally cause a stack overflow, like this:
 
     void recursion(void)
         return recursion();
 
-  ...will run perfectly fine in Lisp. However, if there is a pending 
-  operation involving a value within the function call, the interpreter 
-  still has to allocate a separate stack frame, meaning it will still 
+  ...will run perfectly fine in Lisp. However, if there is a pending
+  operation involving a value within the function call, the interpreter
+  still has to allocate a separate stack frame, meaning it will still
   overflow.
 
-* Indentation & Formatting: The Lisp community generally prefers using two 
-  spaces for indentation. Furthermore, spaces are used for alignment to keep 
+* Indentation & Formatting: The Lisp community generally prefers using two
+  spaces for indentation. Furthermore, spaces are used for alignment to keep
   the layout looking clean and beautiful.
 
   For example:
-    
+
     (define (abs x)
       (cond ((= x 0) 0)
             ((> x 0) x)
             ((< x 0) (- x))))
 
-I've found that SICP can be a bit of a pain, but learning it is strangely 
+I've found that SICP can be a bit of a pain, but learning it is strangely
 addictive.
