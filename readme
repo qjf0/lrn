@@ -1,5 +1,30 @@
-Learn SICP
-Read 1.2.1
+learn CSAPP
+none
+Tue Jul 9, 2026
+15:53
+
+Actually, I skimmed through CSAPP roughly before, but, you know, reading it
+that superficially doesn't really make anything stick deeply in your brain.
+So, this time I plan to read this 'bible' thoroughly.
+
+Section 1.1 mentions an interesting fact: 'Infomation is bits + context.'
+
+The book uses the word 'context,' which sounds pretty facny and techy, making
+it hard for beginner to grasp. Simply put, context is the current state of the
+computer, or to put it even more bluntly, it's 'the way you interpret a string
+of bits.'
+
+For example, suppose there is a value '0111 1000' stored in the computer's
+memory. Without context, this value is meaningless---it's just a random
+combination of bits! But once you associate it with context, things change;
+if we treat it as an ASCII value, it represents the lowercase letter 'x'; if we
+treat it as an 8-bit unsigned integer, it represents the integer 120.
+
+So, in computers, only 'bits + context' can constitute meaningful 'information'!
+
+--------------------------------------------------------------------------------
+learn SICP
+read 1.2.1
 Tue Jul 9, 2026
 14:12
 
@@ -30,7 +55,8 @@ iterative version, you don't see that expansion-contraction pattern; it can
 archieve O(1) space complexity and has no risk of stack overflow.
 
 --------------------------------------------------------------------------------
-none
+learn SICP
+fix issues of my exercise
 Tue Jul 7, 2026
 15:42
 
@@ -55,8 +81,8 @@ Fixed a few issues that I hadn't noticed before:
   original ./sicp/p/1_3.scm file.
 
 --------------------------------------------------------------------------------
-none
-none
+learn SICP
+exercise 1.1 - 1.8
 Tue Jul 7, 2026
 14:00
 
@@ -166,8 +192,8 @@ Today, I started working on the exercises for SICP Section 1.1.
   I successfully implemented this algorithm in ./sicp/p/1_8.scm.
 
 --------------------------------------------------------------------------------
-none
-none
+learn SICP
+read 1.1.x
 Mon, Jul 6, 2026
 01:40
 
