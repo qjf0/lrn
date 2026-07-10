@@ -1,5 +1,4 @@
 learn CSAPP
-none
 Tue Jul 9, 2026
 15:53
 
@@ -21,6 +20,10 @@ if we treat it as an ASCII value, it represents the lowercase letter 'x'; if we
 treat it as an 8-bit unsigned integer, it represents the integer 120.
 
 So, in computers, only 'bits + context' can constitute meaningful 'information'!
+
+The first chapter of the entire CSAPP is a simple tour of computer architecture
+(with no labs or assignments). I'm already thoroughly familiar with it, so I
+just skipped straight to Chapter 2.
 
 --------------------------------------------------------------------------------
 learn SICP
