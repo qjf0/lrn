@@ -1,5 +1,55 @@
 SICP: 1.2.1
-CSAPP: 2.1.7
+CSAPP: 2.1.9
+
+--------------------------------------------------------------------------------
+learn CSAPP
+read 2.1.8 - 2.1.9
+Sat Jul 11, 2026  11:21 PM CST
+
+Section 2.1.8 through 2.1.10 are more like 'A Supplement to C Bitwise Operations
+and Logical Computations." Since I'm already quite familiar with those, I'll
+only mention a few fun little tricks about opearations that I find interesting
+(extracurricular content).
+
+I think I'm now ready to start the first mini-poject: I want to implement a
+'zero-branch' Conway's Game of Life terminal emulator using only bitwise
+operations.
+
+FUN THING #1:
+    We can instantly check whether 'x' is a power of '2' with:
+
+        (x & (x - 1)) == 0;
+
+FUN THINGS #2:
+    We can replace '%' with '&' - i.e., 'x & (n - 1)'.
+    This is a much faster modulo accelerator, but the prerequisite is that 'n'
+    must be a power of '2'.
+
+    This trick can be used, for example, to compute hash indices in the classic
+    Two-Sum problem in LeetCode.
+
+FUN THINGS #3:
+    Branchless maximum value:
+
+        int max = a ^ ((a ^ b) & -(a < b));
+
+    This ensures your CPU pipeline isn't stalled – in short, it's a tiny bit
+    faster.
+
+FUN THINGS #4:
+    When writing binary search, we often compute '(x + y) / 2', but what if
+    'x + y' overflows the data type?
+
+    We can avoid that with:
+
+        int mid = (x & y) + ((x ^ y) >> 1);
+
+Fun thing #5:
+    Instant case switching:
+
+        char c = 'a';
+        c ^= 0x20;     // becomes 'A'
+        c ^= 0x20;     // becomes 'a' again
 
 --------------------------------------------------------------------------------
 learn SICP
