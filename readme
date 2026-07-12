@@ -32,14 +32,13 @@ This grows linearly and is far more efficient.
 
 Then comes the coin change problem. I tried to write it myself:
 
-Rule: number of ways to change amount a with n kinds of coins =
-* ways to change a using all but the first coin
-* plus ways to change a - d (d is value of first coin) using all
-  coins.
+  Rule: number of ways to change amount a with n kinds of coins =
+      * ways to change a using all but the first coin
+      * plus ways to change a - d (d is value of first coin) using all coins.
 
-Algorithm:
-* if a = 0 → 1 way
-* if a < 0 or n = 0 → 0 ways
+  Algorithm:
+      * if a = 0 → 1 way
+      * if a < 0 or n = 0 → 0 ways
 
 I first wrote a C prototype (./sicp/etc/c/count_change.c), then ported to Scheme
 (./sicp/etc/count_change.scm).
