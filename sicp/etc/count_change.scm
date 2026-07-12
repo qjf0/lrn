@@ -1,0 +1,15 @@
+(define (first-denomination allowed-kinds)
+  (cond ((= allowed-kinds 1) 1)
+        ((= allowed-kinds 2) 5)
+        ((= allowed-kinds 3) 10)
+        ((= allowed-kinds 4) 25)
+        ((= allowed-kinds 5) 50)))
+
+(define (recursion amount allowed-kinds)
+  (cond ((= amount 0) 1)
+        ((or (< amount 0) (= allowed-kinds 0)) 0)
+        (else (+ (recursion amount (- allowed-kinds 1))
+                 (recursion (- amount (first-denomination allowed-kinds)) allowed-kinds)))))
+
+(define (count-change amount)
+  (recursion amount 5))

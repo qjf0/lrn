@@ -1,8 +1,48 @@
-DOING: 'Zero-branch' Conway's Game of Life emulator
-        using only bitwise operations
-
 SICP: 1.2.1
 CSAPP: 2.1.9
+
+--------------------------------------------------------------------------------
+learn SICP
+read 1.2.2
+Sun Jul 12, 2026  08:06 PM CST
+
+SICP 1.2.2 uses a terrible Fibonacci example:
+
+  (define (fib n)
+    (cond ((= n 0) 0)
+          ((= n 1) 1)
+          (else (+ (fib (- n 1)) (fib (- n 2))))))
+
+It illustrates the serious problem of tree recursion – massive redundant
+computation: to compute (fib 5), we need (fib 4) and (fib 3);
+to compute (fib 4) we need (fib 3) and (fib 2), and so on (see Figure 1-5).
+The growth is exponential in n.
+
+Then SICP gives a linear iterative version:
+
+(define (fib n)
+  (fib-iter 1 0 n))
+
+(define (fib-iter a b count)
+  (if (= count 0)
+      b
+      (fib-iter (+ a b) a (- count 1))))
+
+This grows linearly and is far more efficient.
+
+Then comes the coin change problem. I tried to write it myself:
+
+Rule: number of ways to change amount a with n kinds of coins =
+* ways to change a using all but the first coin
+* plus ways to change a - d (d is value of first coin) using all
+  coins.
+
+Algorithm:
+* if a = 0 → 1 way
+* if a < 0 or n = 0 → 0 ways
+
+I first wrote a C prototype (./sicp/etc/c/count_change.c), then ported to Scheme
+(./sicp/etc/count_change.scm).
 
 --------------------------------------------------------------------------------
 learn CSAPP
